@@ -12,6 +12,7 @@
 (def phrases-url (str text-analytics-url "keyPhrases"))
 (def topics-url (str text-analytics-url "topics"))
 (def sentiment-url (str text-analytics-url "sentiment"))
+(def languages-url (str text-analytics-url "languages"))
 
 (def corpii
   ["abominations.of.yondo.txt"
@@ -39,6 +40,11 @@
 (defn build-body
   [texts]
   (vec (flatten (map #(chunk-corpus (parse-corpus (slurp-corpus %)) %) texts))))
+
+(defn languages-body-template
+  [texts]
+  (json/write-str
+   {:documents (build-body texts)}))
 
 (defn topics-body-template
   [texts]
@@ -75,6 +81,10 @@
   [texts]
   (analyze-text sentiment-url phrases-body-template texts))
 
+(defn analyze-text-languages
+  [texts]
+  (analyze-text languages-url languages-body-template texts))
+
 (defn get-analysis
   [location]
   (client/get location
@@ -94,6 +104,9 @@
 
   ;; sentiment analysis
   (analyze-text-sentiment corpii)
+
+  ;; languages analysis
+  (analyze-text-languages corpii)
   )
 
 (defn -main

@@ -1,0 +1,24 @@
+{:request-time 6566,
+ :repeatable? false,
+ :protocol-version {:name "HTTP", :major 1, :minor 1},
+ :streaming? true,
+ :chunked? true,
+ :reason-phrase "Accepted",
+ :headers
+ {"Transfer-Encoding" "chunked",
+  "Location"
+  "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/operations/2ed3b844752d4ad8aefa52ab56df27ce",
+  "Operation-Location"
+  "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/operations/2ed3b844752d4ad8aefa52ab56df27ce",
+  "x-aml-ta-request-id" "eb05687a-97d0-4914-b939-23da1ac15d8c",
+  "X-Content-Type-Options" "nosniff",
+  "apim-request-id" "af65aea0-5264-4db2-b95e-e454929d4f49",
+  "Strict-Transport-Security" "max-age=31536000; includeSubDomains; preload",
+  "Date" "Tue, 25 Oct 2016 15:02:47 GMT",
+  "Connection" "close"},
+ :orig-content-encoding nil,
+ :status 202,
+ :length -1,
+ :body "",
+ :trace-redirects
+ ["https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics?minimumNumberOfDocuments=10"]}

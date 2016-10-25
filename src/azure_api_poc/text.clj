@@ -4,8 +4,8 @@
    [clojure.data.json :as json]
    [clojure.string :as str]))
 
-;; Invalid key for demonstration
-(def sub-key "cdd27a149c7542e3b543579b08a05f72")
+;; Text API key1
+(def sub-key "burrito")
 
 (def text-analytics-url "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/")
 (def phrases-url (str text-analytics-url "keyPhrases"))

@@ -5,10 +5,13 @@
    [clojure.string :as str])
   (:gen-class))
 
+;; ESC
 (def sub-key "cdd27a149c7542e3b543579b08a05f72")
+
 (def text-analytics-url "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/")
 (def phrases-url (str text-analytics-url "keyPhrases"))
 (def topics-url (str text-analytics-url "topics"))
+(def sentiment-url (str text-analytics-url "sentiment"))
 
 (def corpii
   ["abominations.of.yondo.txt"
@@ -68,6 +71,10 @@
   [texts]
   (analyze-text phrases-url phrases-body-template texts))
 
+(defn analyze-text-sentiment
+  [texts]
+  (analyze-text sentiment-url phrases-body-template texts))
+
 (defn get-analysis
   [location]
   (client/get location
@@ -76,12 +83,17 @@
                :headers {"Ocp-Apim-Subscription-Key" sub-key}}))
 
 (comment
+  ;; phrase analysis
   (analyze-text-phrases corpii)
 
+  ;; topic analysis
   (analyze-text-topics corpii)
   ;; get from 202
   (get-analysis "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/operations/f999c42315034ffcb0874b877cb2019b")
   (get-analysis "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/operations/2ed3b844752d4ad8aefa52ab56df27ce")
+
+  ;; sentiment analysis
+  (analyze-text-sentiment corpii)
   )
 
 (defn -main
